@@ -236,3 +236,18 @@ db.equipamento.aggregate(
 	 as : "instalação_softw"
     }
 })
+
+//Estudos 05.10
+
+db.software.insertOne xxxx
+db.fabricante.deletOne ({"_id" : ObjectId ("123455")})
+db.software.insertOne({TIPO_PRODUTO: "Softare", NACIONALIDADE: "BR"})
+
+db.fabricante.aggregate (
+    {$match: {TIPO_PRODUTO: /soft/i}}, 
+    {$lookup: {
+        from: "Software",
+        localField: "fabricante.TIPO_PRODUTO",
+        foreignField: "software.NOME",
+        as: "Test Guardado"
+        }})
